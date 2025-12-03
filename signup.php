@@ -13,7 +13,7 @@ if(isset($_POST['signup'])){
     if (!preg_match('/^[a-zA-Z ]+$/', $name)) {
         $errors['name'] = "Name should contain only letters and spaces";
     } 
-    else if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+    else if(!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)){
         $errors['email'] = "Invalid email format";
     }
     else if (strlen($password) < 6) {

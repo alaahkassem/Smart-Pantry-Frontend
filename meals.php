@@ -26,20 +26,21 @@ $row=mysqli_fetch_array($result);
 <div class="container">
       <div class="top">
         Welcome <?php echo $row['name']; ?> 👋  
+            <p>What do you want to cook today?</p>
 
 </div>
 
-    <a href="meals.php?type=breakfast" class="card">
+    <a href="categories.php?id_meal=1" class="card">
         <div class="icon">🍳</div>
         <p>Breakfast</p>
     </a>
 
-    <a href="meals.php?type=lunch" class="card">
+    <a href="categories.php?id_meal=2" class="card">
         <div class="icon">🍽️</div>
         <p>Lunch</p>
     </a>
 
-    <a href="meals.php?type=dinner" class="card">
+    <a href="categories.php?id_meal=3" class="card">
         <div class="icon">🌙</div>
         <p>Dinner</p>
     </a>

@@ -13,7 +13,7 @@ if(isset($_POST['login'])){
 
     if(mysqli_num_rows($result) == 1){
         $row = mysqli_fetch_array($result);
-
+//password verification for hashed password
         if(password_verify($password, $row['password'])){
             $_SESSION['id_user'] = $row['id_user'];
             $_SESSION['user_name'] = $row['name'];
