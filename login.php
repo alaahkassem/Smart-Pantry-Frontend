@@ -3,7 +3,7 @@ session_start();
 $errors = [];
 include 'db.php';
 
-/* ------------------ LOGIN ------------------ */
+
 if(isset($_POST['login'])){
     $email = $_POST['email'];
     $password = $_POST['password'];
@@ -13,7 +13,7 @@ if(isset($_POST['login'])){
 
     if(mysqli_num_rows($result) == 1){
         $row = mysqli_fetch_array($result);
-//password verification for hashed password
+
         if(password_verify($password, $row['password'])){
             $_SESSION['id_user'] = $row['id_user'];
             $_SESSION['user_name'] = $row['name'];
@@ -39,12 +39,10 @@ if(isset($_POST['login'])){
 <body>
 
 <form action="" method="post">
-<div class="container">
-
-    <div class="tabs">
-        <div class="tab active">Login</div>
-    </div>
-
+<div class="container">   
+    
+<img src="logo.png"  style="width:80px;height:80px;">
+ 
     <div class="form">
         <input type="text" name="email" placeholder="Enter your email" required>
 
@@ -55,9 +53,14 @@ if(isset($_POST['login'])){
         <?php endif; ?>
 
         <input class="btn" type="submit" name="login" value="Login">
-        <p class="par">Create new account <a href="signup.php">Sign up</a></p>
-    </div>
+        <p style="margin-top:10px;">
+    <a href="forgot_password.php" style="color:#d36a8a;">Forgot Password?</a>
+</p>
+        <p>Don't have an account? <a href="signup.php" style="color:#d36a8a;">Register here</a></p>
 
+     
+       
+    </div>
 </div>
 </form>
 </body>

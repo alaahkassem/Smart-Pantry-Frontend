@@ -26,7 +26,7 @@ $row=mysqli_fetch_array($result);
 <div class="container">
       <div class="top">
         Welcome <?php echo $row['name']; ?> 👋  
-            <p>What do you want to cook today?</p>
+        <p>What do you want to cook today?</p>
 
 </div>
 

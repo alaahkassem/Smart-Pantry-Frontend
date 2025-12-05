@@ -6,7 +6,7 @@
     
     
     <title>Smart Pantry Chef</title>
-    <link rel="icon" type="image/png" href="/Applications/XAMPP/xamppfiles/htdocs/SmartPanetryChef/PHP-frontend/logo copy.png"/>
+    <link rel="icon" type="image/png" href="/Applications/XAMPP/xamppfiles/htdocs/PHP-frontend/logo.png"/>
 
     
 
@@ -96,13 +96,13 @@
 
 <body>
       <div class="logo">
-        <img src="/Applications/XAMPP/xamppfiles/htdocs/SmartPanetryChef/PHP-frontend/logo copy.png" alt="logo" onerror="this.style.display='none'; document.getElementById('logoFallback').style.display='flex';">
+       <img src="logo.png" alt="logo">
     </div>
 
     <div id="slogan"></div>
 
     <script>
-        const logo = document.querySelector('.logo-container img');
+        const logo = document.querySelector('.logo img');
         
         const sloganText = "Cook what you have, buy what you need";
         const sloganElement = document.getElementById("slogan");

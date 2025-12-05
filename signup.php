@@ -13,7 +13,7 @@ if(isset($_POST['signup'])){
     if (!preg_match('/^[a-zA-Z ]+$/', $name)) {
         $errors['name'] = "Name should contain only letters and spaces";
     } 
-    else if(!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)){
+    else if(!preg_match('/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/', $email)) {
         $errors['email'] = "Invalid email format";
     }
     else if (strlen($password) < 6) {
@@ -53,9 +53,7 @@ if(isset($_POST['signup'])){
 <form action="" method="post"> 
 <div class="container">
 <div class="form">
-<div class="tabs">
-    <div class="tab active">Sign up</div>
-</div>
+<img src="logo.png"  style="width:80px;height:80px;">
 
         <input type="text" name="name" placeholder="Enter your name" required>
         <?php if(isset($errors['name'])): ?>
