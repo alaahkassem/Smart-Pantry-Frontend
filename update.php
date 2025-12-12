@@ -13,13 +13,6 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// email duplication check
-$check = mysqli_query($con, "SELECT * FROM users WHERE email='$email' AND id_user!='$user_id'");
-if (mysqli_num_rows($check) > 0) {
-    echo "Email already in use";
-    exit();
-}
-
 if ($password != "") {
     $hashed = password_hash($password, PASSWORD_BCRYPT);
     $sql = "UPDATE users SET name='$name', email='$email', password='$hashed' WHERE id_user='$user_id'";

@@ -48,8 +48,10 @@ $result = mysqli_query($con, $query);
 <div class="container">
     <header>
         <nav class="navbar">
-            <img src="logo.png" alt="Smart Pantry Chef" style="width:100px;height:auto;margin:0;padding:0;display:block;">          
-            <a href="home.php">Home</a>
+     <a href="logout.php">          
+        <img src="logo.png" alt="Smart Pantry Chef" style="width:100px;height:auto;margin:0;padding:0;display:block;">          
+</a>  
+        <a href="home.php">Home</a>
             <a href="meals.php">Meals</a>
             <a href="categories.php">Categories</a>
             <a href="recipes.php">Recipes</a>
@@ -58,7 +60,7 @@ $result = mysqli_query($con, $query);
             <a href="mood.php">Mood</a>
             <a href="history.php">History</a>
             <a href="favorite.php" class="active">Favorites</a>
-              <a href="logout.php">Logout</a>
+            <a href="supermarket.php">Market</a>
         </nav>
     </header>
 <hr>
