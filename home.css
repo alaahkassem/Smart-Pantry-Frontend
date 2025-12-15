@@ -68,13 +68,7 @@
     }
     /* Categories */
     
-    .cat {
-        margin: 0 15px;
-        text-decoration: none;
-        color: #d63384;
-        font-weight: 500;
-        transition: color 0.3s ease;
-    }
+    .cat {}
     /* Recipe Cards */
     
     div[style*="flex"] {

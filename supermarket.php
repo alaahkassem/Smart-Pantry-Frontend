@@ -37,6 +37,7 @@ $supermarketResult = mysqli_query($con, $supermarketQuery);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Supermarket</title>
 <link rel="stylesheet" href="supermarket.css">
+<link rel="website icon" type="png" href="logo.png">
 </head>
 <body>
 <header>

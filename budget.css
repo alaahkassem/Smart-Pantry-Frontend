@@ -58,7 +58,7 @@ nav a:hover {
 /* BABY-PINK TITLE BOX */
 
 .title-box {
-    background: #ffb6c9;
+    background: var(--pink);
     padding: 18px;
     border-radius: 15px;
     text-align: center;

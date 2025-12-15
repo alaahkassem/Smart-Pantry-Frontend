@@ -9,7 +9,7 @@ if(!isset($_SESSION['id_user'])){
 
 $id_user = $_SESSION['id_user'];
 
-/* ------- ADD TO FAVORITE -------- */
+/* ADD TO FAVORITE */
 if(isset($_GET['id_recipe'])){
     $id_recipe = intval($_GET['id_recipe']);
     $sq = "INSERT INTO favorite (id_user, id_recipe, add_date) 
@@ -17,7 +17,7 @@ if(isset($_GET['id_recipe'])){
     mysqli_query($con, $sq);
 }
 
-/* ------- DELETE FROM FAVORITE -------- */
+/*DELETE FROM FAVORITE*/
 if(isset($_GET['remove'])){
     $id_fav = intval($_GET['remove']);
     mysqli_query($con, "DELETE FROM favorite WHERE id_fav='$id_fav' AND id_user='$id_user'");
@@ -25,7 +25,7 @@ if(isset($_GET['remove'])){
     exit();
 }
 
-/* ------- GET ALL FAVORITE RECIPES -------- */
+/* GET ALL FAVORITE RECIPES*/
 $query = "
 SELECT favorite.id_fav, favorite.add_date, recipes.name_recipe, recipes.image 
 FROM favorite
@@ -42,6 +42,7 @@ $result = mysqli_query($con, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Favorites</title>
     <link rel="stylesheet" href="fav_hist.css">
+    <link rel="website icon" type="png" href="logo.png">
 </head>
 <body>
 

@@ -9,7 +9,7 @@ if(!isset($_SESSION['id_user'])){
 
 $id_user = $_SESSION['id_user'];
 
-/* ------- DELETE FROM HISTORY -------- */
+/* DELETE FROM HISTORY*/
 if(isset($_GET['remove'])){
     $id_history = intval($_GET['remove']);
     mysqli_query($con, "DELETE FROM history WHERE id_history='$id_history' AND id_user='$id_user'");
@@ -17,7 +17,7 @@ if(isset($_GET['remove'])){
     exit();
 }
 
-/* ------- GET ALL HISTORY DATA -------- */
+/*GET ALL HISTORY DATA*/
 $query = "
 SELECT history.id_history, history.date, recipes.id_recipe, recipes.name_recipe, recipes.image 
 FROM history
@@ -34,6 +34,7 @@ $result = mysqli_query($con, $query);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>History</title>
     <link rel="stylesheet" href="fav_hist.css">
+    <link rel="website icon" type="png" href="logo.png">
 </head>
 <body>
 <div class="container">

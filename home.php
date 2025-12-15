@@ -2,9 +2,6 @@
 session_start();
 include 'db.php';
 
-$cat_sql = "SELECT * FROM categories";
-$categories = mysqli_query($con, $cat_sql);
-
 $recipe_sql = "SELECT * FROM recipes";
 $recipes = mysqli_query($con, $recipe_sql);
 ?>
@@ -14,6 +11,7 @@ $recipes = mysqli_query($con, $recipe_sql);
     <meta charset="UTF-8">
     <title>Home | Smart Pantry Chef</title>
     <link rel="stylesheet" href="home.css">
+    <link rel="website icon" type="png" href="logo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 </head>
 <body>
@@ -21,7 +19,8 @@ $recipes = mysqli_query($con, $recipe_sql);
 <div class="container">
     <header>
         <nav class="navbar">
-        <a href="logout.php">    <img src="logo.png" alt="Smart Pantry Chef" style="width:100px;height:auto;margin:0;padding:0;display:block;">  </a>        
+        <a href="logout.php">    
+            <img src="logo.png" alt="Smart Pantry Chef" style="width:100px;height:auto;margin:0;padding:0;display:block;">  </a>        
             <a href="home.php" class="active">Home</a>
             <a href="meals.php">Meals</a>
             <a href="categories.php">Categories</a>
@@ -31,30 +30,16 @@ $recipes = mysqli_query($con, $recipe_sql);
             <a href="mood.php">Mood</a>
             <a href="history.php">History</a>
             <a href="favorite.php">Favorites</a>
-                 <a href="supermarket.php">Market</a>
+            <a href="supermarket.php">Market</a>
 
         </nav>
     </header>
 
     <hr>
+    
     <h1>Discover Delicious Recipes</h1>
-
-    <h3>Categories</h3>
-    <div class=cat>
-        <?php
-        if(mysqli_num_rows($categories) > 0){
-            while($cat = mysqli_fetch_assoc($categories)){
-        ?>
-            <a href="recipes.php?id_category=<?php echo $cat['id_category']; ?>">
-                <button><?php echo $cat['name_category']; ?></button>
-            </a>
-        <?php
-            }
-        } else {
-            echo "No categories found.";
-        }
-        ?>
-    </div>
+    <h4>   <a href="add_recipe.php" class="btn" style="text-align:center;">Add Your Recipe</a></h4>
+ 
 
     <hr>
 
@@ -80,10 +65,6 @@ $recipes = mysqli_query($con, $recipe_sql);
 </a>
                 <h4><?php echo $row['name_recipe']; ?></h4>
                 
-                <?php if($row['health_type'] == 1){ ?>
-                    <span>Healthy</span>
-                <?php } ?>
-
                 <br><br>
                 <a href="recipe_detail.php?id_recipe=<?php echo $row['id_recipe']; ?>">View Recipe</a>
 

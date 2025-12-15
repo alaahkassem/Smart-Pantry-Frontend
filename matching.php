@@ -104,6 +104,7 @@ if (isset($_POST['submit'])) {
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Smart Pantry Chef — Matching Ingredients</title>
 <link rel="stylesheet" href="matching.css">
+<link rel="website icon" type="png" href="logo.png">
 </head>
 <body>
 <div class="container">

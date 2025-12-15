@@ -23,6 +23,7 @@ $res = mysqli_query($con, $qr);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Categories</title>
     <link rel="stylesheet" href="categories.css">
+    <link rel="website icon" type="png" href="logo.png">
 </head>
 <body>
     <div class="container">

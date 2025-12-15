@@ -46,13 +46,13 @@ if(isset($_POST['signup'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Create an account</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="website icon" type="png" href="logo.png">
 </head>
 <body>
 <form action="" method="post"> 
 <div class="container">
-<div class="form">
 <img src="logo.png"  style="width:80px;height:80px;">
 
         <input type="text" name="name" placeholder="Enter your name" required>
@@ -71,7 +71,7 @@ if(isset($_POST['signup'])){
         <?php endif; ?>
 
         <input class="btn" type="submit" name="signup" value="Sign Up">
-        </div>
+        
         </div>
 </form>
 </body>

@@ -44,6 +44,7 @@ $health_type = mysqli_real_escape_string($con, $_POST['health_type']);
 <head>
     <title>Add Recipe</title>
     <link rel="stylesheet" href="add_recipe.css">
+    <link rel="website icon" type="png" href="logo.png">
 </head>
 
 <body>

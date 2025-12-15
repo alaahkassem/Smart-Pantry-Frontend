@@ -50,6 +50,7 @@ if (isset($_POST['save_budget'])) {
     <meta charset="UTF-8">
     <title>Budget Planning</title>
     <link rel="stylesheet" href="budget.css">
+    <link rel="website icon" type="png" href="logo.png">
 </head>
 <body>
 

@@ -35,6 +35,7 @@ if(isset($_POST['login'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Smart Pantry Chef</title>
     <link rel="stylesheet" href="login.css">
+    <link rel="website icon" type="png" href="logo.png">
 </head>
 <body>
 
@@ -42,8 +43,7 @@ if(isset($_POST['login'])){
 <div class="container">   
     
 <img src="logo.png"  style="width:80px;height:80px;">
- 
-    <div class="form">
+
         <input type="text" name="email" placeholder="Enter your email" required>
 
         <input type="password" name="password" placeholder="Enter your password" required>
@@ -54,10 +54,6 @@ if(isset($_POST['login'])){
 
         <input class="btn" type="submit" name="login" value="Login">
         <p>Don't have an account? <a href="signup.php" style="color:#d36a8a;">Register here</a></p>
-
-     
-       
-    </div>
 </div>
 </form>
 </body>

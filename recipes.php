@@ -24,6 +24,7 @@ $recipeResult = mysqli_query($con, $recipeQuery);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Recipes</title>
 <link rel="stylesheet" href="recipes.css">
+<link rel="website icon" type="png" href="logo.png">
 </head>
 
 <body>
@@ -51,7 +52,7 @@ $recipeResult = mysqli_query($con, $recipeQuery);
         <form method="get">
             <input type="text" class="search-box" name="search" placeholder="Search recipe..." value="<?php echo $searchTerm; ?>">
             <button class="search-btn">Search</button>
-         <h4>   <a href="add_recipe.php" class="btn">Add Your Recipe</a><br></h4>
+     
         </form>
     </div>
 

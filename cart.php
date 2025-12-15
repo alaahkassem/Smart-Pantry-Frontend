@@ -55,7 +55,7 @@ $cartResult = mysqli_query($con, $cartQuery);
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>My Cart</title>
 
-
+<link rel="website icon" type="png" href="logo.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=delete" />
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 

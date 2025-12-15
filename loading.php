@@ -6,6 +6,7 @@
     
     
     <title>Smart Pantry Chef</title>
+    <link rel="website icon" type="png" href="logo.png">
     <link rel="icon" type="image/png" href="/Applications/XAMPP/xamppfiles/htdocs/PHP-frontend/logo.png"/>
 
     
@@ -98,7 +99,7 @@
       <div class="logo">
        <img src="logo.png" alt="logo">
     </div>
-
+<br><br><br>
     <div id="slogan"></div>
 
     <script>

@@ -27,6 +27,7 @@ if ($selected_mood) {
     <meta charset="UTF-8">
     <title>Mood | Smart Pantry Chef</title>
     <link rel="stylesheet" href="mood.css">
+    <link rel="website icon" type="png" href="logo.png">
 </head>
 <body>
 <div class="container">
@@ -92,11 +93,6 @@ if ($selected_mood) {
                         style="width:100%; height:150px; object-fit:cover;">
 
                     <h4><?php echo $row['name_recipe']; ?></h4>
-
-                   
-                    <?php if ($row['health_type'] == 1) { ?>
-                        <span>Healthy</span>
-                    <?php } ?>
 
                     <br><br>
                     <a href="recipe_detail.php?id_recipe=<?php echo $row['id_recipe']; ?>">View Recipe</a>
