@@ -43,7 +43,6 @@ $wishlistQuery = "
 ";
 $wishlistResult = mysqli_query($con, $wishlistQuery);
 
-
 $cartCountQuery = mysqli_query($con, "SELECT SUM(quantity) AS total FROM cart WHERE id_user='$id_user'");
 $cartCountRow = mysqli_fetch_assoc($cartCountQuery);
 $cartCount = $cartCountRow['total'];
@@ -95,36 +94,29 @@ h1{
     justify-content:center;
 }
 .item-card{
-    background:#fff;
-    border-radius:20px;
-    width:220px;
-    padding:25px 15px;
-    text-align:center;
-    box-shadow: 0 0 20px rgba(179,59,90,0.2),
-                0 8px 25px rgba(179,59,90,0.2),
-                inset 0 0 10px rgba(179,59,90,0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border:1px solid #f0c0d2;
+    background: #fff;
+    border-radius: 20px;
+    width: 220px;
+    padding: 25px 15px;
+    text-align: center;
     position: relative;
+    border: 1px solid #f0c0d2;
+
+    box-shadow: 0 0 0 3px #b33b5a,  
+                0 8px 25px rgba(179,59,90,0.2),  
+                inset 0 0 10px rgba(179,59,90,0.1);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.item-card::after {
-    content:'';
-    position:absolute;
-    top:0; left:0; right:0; bottom:0;
-    border-radius:20px;
-    padding:2px;
-    background: linear-gradient(135deg, #f57c99, #b33b5a, #ff8db0);
-    -webkit-mask: 
-        linear-gradient(#fff 0 0) content-box, 
-        linear-gradient(#fff 0 0);
-    -webkit-mask-composite: destination-out;
-    mask-composite: exclude;
-    pointer-events:none;
-}
+
 .item-card:hover{
     transform: translateY(-5px);
-    box-shadow: 0 0 30px rgba(179,59,90,0.6), 0 12px 35px rgba(179,59,90,0.3), inset 0 0 15px rgba(179,59,90,0.1);
+    box-shadow: 0 0 0 3px #b33b5a(197, 23, 133, 0.6),
+                0 12px 35px rgba(179,59,90,0.3),
+                inset 0 0 15px rgba(179,59,90,0.1);
 }
+
+
 .item-card h3{
     margin:12px 0 10px;
     color:#111;

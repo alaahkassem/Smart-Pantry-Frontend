@@ -23,6 +23,7 @@ if(!$recipeQuery || mysqli_num_rows($recipeQuery) == 0){
 }
 $recipe = mysqli_fetch_assoc($recipeQuery);
 
+
 $ingredientQuery = mysqli_query($con, "
     SELECT i.id_ingredient, i.name_ingredient, ri.quantity
     FROM recipes_ingredient ri
@@ -30,10 +31,15 @@ $ingredientQuery = mysqli_query($con, "
     WHERE ri.id_recipe='$id_recipe'
 ");
 
+$ingredients = [];
+while($ing = mysqli_fetch_assoc($ingredientQuery)){
+    $ingredients[] = $ing;
+}
+
+
 if(isset($_POST['add_to_cart'])){
     mysqli_query($con, "DELETE FROM cart WHERE id_user='$id_user'");
-    mysqli_data_seek($ingredientQuery, 0);
-    while($ing = mysqli_fetch_assoc($ingredientQuery)){
+    foreach($ingredients as $ing){
         $id_ingredient = (int)$ing['id_ingredient'];
         $itemQuery = mysqli_query($con, "SELECT id_item FROM supermarket WHERE id_ingredient='$id_ingredient' LIMIT 1");
         if($itemQuery && mysqli_num_rows($itemQuery) > 0){
@@ -46,9 +52,9 @@ if(isset($_POST['add_to_cart'])){
     exit();
 }
 
+
 if(isset($_POST['add_to_wishlist'])){
-    mysqli_data_seek($ingredientQuery, 0);
-    while($ing = mysqli_fetch_assoc($ingredientQuery)){
+    foreach($ingredients as $ing){
         $id_ingredient = (int)$ing['id_ingredient'];
         $itemQuery = mysqli_query($con, "SELECT id_item FROM supermarket WHERE id_ingredient='$id_ingredient' LIMIT 1");
         if($itemQuery && mysqli_num_rows($itemQuery) > 0){
@@ -64,6 +70,7 @@ if(isset($_POST['add_to_wishlist'])){
     exit();
 }
 
+
 if(isset($_POST['add_single_wish'])){
     $id_item = (int)$_POST['single_id_item'];
     $check = mysqli_query($con, "SELECT * FROM wishlist WHERE id_user='$id_user' AND id_item='$id_item'");
@@ -75,7 +82,6 @@ if(isset($_POST['add_single_wish'])){
 }
 
 
-// Add to history automatically when viewing
 mysqli_query($con, "INSERT INTO history (id_user, id_recipe) VALUES ('$id_user','$id_recipe')");
 ?>
 
@@ -86,12 +92,8 @@ mysqli_query($con, "INSERT INTO history (id_user, id_recipe) VALUES ('$id_user',
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title><?php echo $recipe['name_recipe']; ?></title>
 <link rel="website icon" type="png" href="logo.png">
-
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet">
-
-<!-- Icon -->
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite" />
-
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" />
 <style>
 body {
     margin: 0;
@@ -103,12 +105,20 @@ body {
 .recipe-container {
     max-width: 900px;
     margin: 50px auto;
-    background: #ffffff;
+    background: #fff;
     padding: 35px;
     border-radius: 25px;
     border: 2px solid #e3b0c4;
     box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.recipe-container p.description {
+    font-size: 17px;           
+    line-height: 1.8;         
+    color: #111;              
+    text-align: justify;      
+    margin-bottom: 25px;       
+    font-family: 'Nunito', sans-serif; 
 }
 
 .recipe-container:hover {
@@ -119,7 +129,6 @@ body {
 .top-actions {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     margin-bottom: 20px;
 }
 
@@ -129,16 +138,29 @@ body {
     padding: 12px 22px;
     color: #fff;
     border: 2px solid #b94666;
-    box-shadow: 0 4px 12px rgba(195,90,120,0.3);
-    transition: all 0.3s ease;
     text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.back-button { background: #c35a78; }
-.back-button:hover { background: #a13d5c; border-color: #902e4f; transform: translateY(-2px); box-shadow: 0 6px 14px rgba(161,61,92,0.4); }
+.back-button {
+    background: #c35a78;
+}
+.back-button:hover {
+    background: #a13d5c;
+    border-color: #902e4f;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(161,61,92,0.4);
+}
 
-.small-button { background: #b94666; }
-.small-button:hover { background: #9f3853; border-color: #c14769; transform: translateY(-2px); box-shadow: 0 6px 14px rgba(159,56,83,0.4); }
+.small-button {
+    background: #b94666;
+}
+.small-button:hover {
+    background: #9f3853;
+    border-color: #c14769;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(159,56,83,0.4);
+}
 
 .recipe-container h1 {
     font-size: 38px;
@@ -157,14 +179,15 @@ body {
     border: 2px solid #e3b0c4;
     transition: transform 0.3s ease;
 }
-
-.recipe-container img:hover { transform: scale(1.03); }
+.recipe-container img:hover {
+    transform: scale(1.03);
+}
 
 .recipe-details {
     display: flex;
     justify-content: space-around;
     padding: 18px;
-    background: #ffffff;
+    background: #fff;
     border-radius: 18px;
     border: 1px solid #e3b0c4;
     margin-bottom: 25px;
@@ -175,15 +198,7 @@ body {
     margin: 0;
     font-weight: 600;
     font-size: 16px;
-    color: #9e1d4d;
-}
-
-.recipe-container p {
-    font-size: 17px;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    color: #111;
-    font-family: 'Nunito', sans-serif;
+    color: #000;
 }
 
 .ingredients h3 {
@@ -192,10 +207,10 @@ body {
     text-align: center;
     margin-bottom: 15px;
     color: #c35a78;
+    position: relative;
 }
-
 .ingredients h3::after {
-    content: '';
+    content: "";
     display: block;
     width: 60px;
     height: 3px;
@@ -204,24 +219,28 @@ body {
     border-radius: 2px;
 }
 
+.ingredients ul {
+    list-style: none;
+    padding: 0;
+}
+
 .ingredients li {
-    padding: 14px 18px;
-    margin-bottom: 12px;
-    background: #ffffff;
-    border-radius: 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+    background: #fff;
+    border-radius: 15px;
     border: 2px solid #e3b0c4;
-    transition: all 0.3s ease;
     font-family: 'Nunito', sans-serif;
     font-size: 16px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
 }
-
 .ingredients li:hover {
+    background: #f9f9f9;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-    background: #f9f9f9;
 }
 
 .ingredients li::before {
@@ -231,24 +250,21 @@ body {
 }
 
 .material-symbols-outlined {
-    font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;
+    font-size: 28px;
     cursor: pointer;
     color: #c35a78;
-    transition: 0.3s;
-    font-size: 28px;
+    transition: color 0.3s, transform 0.3s;
 }
-
 .material-symbols-outlined:hover {
     color: #9f3853;
     transform: scale(1.2);
 }
 
 .actions {
-    margin-top: 25px;
     display: flex;
     justify-content: center;
+    margin-top: 25px;
 }
-
 .actions button {
     padding: 14px 28px;
     background: #c35a78;
@@ -256,24 +272,31 @@ body {
     font-weight: 600;
     border: 2px solid #b94666;
     border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(195,90,120,0.3);
+    cursor: pointer;
     transition: all 0.3s ease;
-    font-family: 'Nunito', sans-serif;
 }
-
 .actions button:hover {
     background: #a13d5c;
-    border-color: #902e4f;
     transform: translateY(-2px);
     box-shadow: 0 6px 14px rgba(161,61,92,0.4);
 }
 
 @media (max-width: 650px) {
-    .recipe-details { flex-direction: column; gap: 12px; }
-    .ingredients li { flex-direction: column; align-items: flex-start; }
-    .actions button, .back-button, .small-button { width: 100%; text-align: center; }
+    .recipe-details {
+        flex-direction: column;
+        gap: 12px;
+    }
+    .ingredients li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .actions button, .back-button, .small-button {
+        width: 100%;
+        text-align: center;
+    }
 }
 </style>
+
 </head>
 <body>
 
@@ -294,26 +317,23 @@ body {
     </div>
 
     <h3>Description:</h3>
-    <p><?php echo nl2br($recipe['description']); ?></p>
+    <p class="description"><?php echo nl2br($recipe['description']); ?></p>
+
 
     <div class="ingredients">
         <h3>Ingredients:</h3>
         <ul>
         <?php
-        mysqli_data_seek($ingredientQuery, 0);
-        while($ing = mysqli_fetch_assoc($ingredientQuery)){
+        foreach($ingredients as $ing){
             $id_ingredient = (int)$ing['id_ingredient'];
             echo "<li>";
             echo "<span>".$ing['quantity']." of ".$ing['name_ingredient']."</span>";
-
-        
             echo "<form style='display:inline-block;' method='post'>
                     <input type='hidden' name='single_id_item' value='".$id_ingredient."'>
                     <button type='submit' name='add_single_wish' style='background:none; border:none; padding:0; cursor:pointer;'>
                         <span class='material-symbols-outlined' title='Add to wishlist'>favorite</span>
                     </button>
                   </form>";
-
             echo "</li>";
         }
         ?>

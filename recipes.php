@@ -30,8 +30,8 @@ $recipeResult = mysqli_query($con, $recipeQuery);
 <body>
 <div class="container">
     <header>
-        <nav class="navbar">
-    <a href="logout.php">         <img src="logo.png" alt="Smart Pantry Chef" style="width:100px;height:auto;"></a>
+    <nav class="navbar">
+    <a href="logout.php"><img src="logo.png" alt="Smart Pantry Chef" style="width:100px;height:auto;"></a>
             <a href="home.php">Home</a>
             <a href="meals.php">Meals</a>
             <a href="categories.php">Categories</a>
@@ -41,8 +41,7 @@ $recipeResult = mysqli_query($con, $recipeQuery);
             <a href="mood.php">Mood</a>
             <a href="history.php">History</a>
             <a href="favorite.php">Favorites</a>
-             <a href="supermarket.php">Market</a>
-            
+            <a href="supermarket.php">Market</a> 
         </nav>
     </header>
 <hr>
