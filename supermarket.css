@@ -1,4 +1,8 @@
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     font-family: "Segoe UI", Arial, sans-serif;
@@ -6,6 +10,7 @@ body {
     color: black;
     line-height: 1.6; 
 }
+
 
 header {
     background-color: #fce4ec; 
@@ -53,9 +58,10 @@ h1 {
 
 .items-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px; 
 }
+
 
 .item-card {
     background: linear-gradient(145deg, #ffffff, #f9f9f9);
@@ -87,6 +93,7 @@ h1 {
     margin: 10px 0;
 }
 
+
 .item-card .quantity {
     margin: 15px 0;
 }
@@ -103,6 +110,7 @@ h1 {
     border-radius: 5px;
     text-align: center;
 }
+
 
 .item-card button {
     padding: 12px 20px; 
@@ -130,21 +138,4 @@ footer {
     margin-top: 40px;
     color: #d63384;
     font-size: 14px;
-}
-@media (max-width: 1000px) {
-    .items-container {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (max-width: 600px) {
-    .items-container {
-        grid-template-columns: 1fr;
-    }
-    .container {
-        padding: 20px;
-    }
-    h1 {
-        font-size: 28px;
-    }
 }

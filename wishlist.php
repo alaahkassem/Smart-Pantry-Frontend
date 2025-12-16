@@ -65,6 +65,7 @@ body{
     padding:0;
     color:#111;
 }
+
 .container{
     max-width:900px;
     margin:40px auto;
@@ -74,12 +75,14 @@ body{
     box-shadow:0 12px 40px rgba(179,59,90,0.25);
     border:1px solid #f0c0d2;
 }
+
 h1{
     text-align:center;
     color:#222;
     margin-bottom:25px;
     font-family:'Nunito', sans-serif;
 }
+
 .cart-info{
     text-align:center;
     margin-bottom:25px;
@@ -87,12 +90,16 @@ h1{
     color:#555;
     font-weight:600;
 }
+
+
 .wishlist-container{
     display:flex;
     flex-wrap:wrap;
     gap:25px;
     justify-content:center;
 }
+
+
 .item-card{
     background: #fff;
     border-radius: 20px;
@@ -111,11 +118,10 @@ h1{
 
 .item-card:hover{
     transform: translateY(-5px);
-    box-shadow: 0 0 0 3px #b33b5a(197, 23, 133, 0.6),
+    box-shadow: 0 0 0 3px rgba(179, 59, 90, 0.6),
                 0 12px 35px rgba(179,59,90,0.3),
                 inset 0 0 15px rgba(179,59,90,0.1);
 }
-
 
 .item-card h3{
     margin:12px 0 10px;
@@ -123,6 +129,8 @@ h1{
     font-size:20px;
     font-family:'Nunito', sans-serif;
 }
+
+
 .action-icons{
     display:flex;
     justify-content:center;
@@ -130,15 +138,18 @@ h1{
     margin-top:15px;
     font-size:36px;
 }
+
 .action-icons a{
     text-decoration:none;
     color:black;
     transition: all 0.3s ease;
 }
+
 .action-icons a:hover{
     color:#b33b5a;
     transform: scale(1.3);
 }
+
 .material-symbols-outlined {
     font-variation-settings:
     'FILL' 0,
@@ -146,6 +157,8 @@ h1{
     'GRAD' 0,
     'opsz' 40;
 }
+
+
 .back-button {
     text-decoration: none;
     background: #b33b5a;
@@ -162,17 +175,13 @@ h1{
     text-transform: uppercase;
     letter-spacing: 0.5px;
 }
+
 .back-button:hover {
     background: #922b45;
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(146,43,69,0.4);
 }
-@media (max-width:650px){
-    .wishlist-container{
-        flex-direction:column;
-        align-items:center;
-    }
-}
+
 </style>
 </head>
 <body>
@@ -188,7 +197,7 @@ h1{
         while($row = mysqli_fetch_assoc($wishlistResult)){
             echo "<div class='item-card'>
                     <h3>".$row['name_ingredient']."</h3>
-                    <div class='action-icons'>
+                    <div class='action-icons' >
                         <a href='wishlist.php?move_to_cart=".$row['id_wish']."' title='Move to Cart'>
                             <span class='material-symbols-outlined'>add_shopping_cart</span>
                         </a>
